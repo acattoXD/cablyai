@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cablyai"
+version = "0.0.3"
+description = "A library meant to be a wrapper for the CablyAI service."
+authors = ["acattoXD <acatto@acatto.lol>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "*"
+aiohttp = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
