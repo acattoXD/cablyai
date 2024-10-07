@@ -5,10 +5,22 @@ from googlesearch import search as google_search
 
 class Message:
     def __init__(self, role, content):
+        """
+        Initializes a Message with the given role and content.
+
+        :param role: The role of the message, either "user" or "assistant".
+        :param content: The content of the message.
+        """
         self.role = role
         self.content = content
 
     def __repr__(self):
+        
+        """
+        Returns a string representation of the Message object, which is a dictionary of the object's attributes.
+
+        :return: A string representation of the Message object.
+        """
         return str(self.__dict__)
 
 class Web:
@@ -16,6 +28,13 @@ class Web:
         pass
 
     def search(self, query: str):
+        """
+        Searches the web for the given query and returns the top results.
+
+        :param query: The query to search the web for.
+        :return: A string containing the top results from Google search, or an error message if the search fails.
+        """
+
         try:
             # print(str([url for url in google_search(query)]))
             return str([url for url in google_search(query)])
@@ -132,6 +151,11 @@ tool_definitions = {
 
 class Choice:
     def __init__(self, choice):
+        """
+        Initializes a Choice object with the given choice dictionary.
+
+        :param choice: The choice dictionary
+        """
         self.index = choice["index"]
         self.message = Message(choice["message"]["role"], choice["message"]["content"])
         self.finish_reason = choice["finish_reason"]
@@ -141,6 +165,11 @@ class Choice:
 
 class Completion:
     def __init__(self, choices):
+        """
+        Initializes a Completion object with the given list of choices.
+
+        :param choices: The list of choices
+        """
         self.choices = [Choice(choice) for choice in choices]
 
     def __repr__(self):
@@ -148,9 +177,26 @@ class Completion:
 
 class Completions:
     def __init__(self, client):
+        """
+        Initializes a Completions client with the given client.
+
+        :param client: The CablyAI client to use for making requests.
+        """
         self.client = client
 
     def create(self, model: str, messages: list, tools: list = None, max_tokens: int = None, temperature: int = None):
+        
+        """
+        Creates a completion using the given model and messages.
+
+        :param model: The model to use for the completion.
+        :param messages: The list of messages to use for the completion.
+        :param tools: The list of tools to use for the completion (default is None).
+        :param max_tokens: The maximum number of tokens to generate (default is None).
+        :param temperature: The temperature to use for generating text (default is None).
+        :return: The generated completion.
+        """
+
         if tools and model not in ["gpt-4o", "gpt-4o-mini", "chatgpt-4o-latest", "gpt-4-turbo"]:
             return "Unsupported model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'chatgpt-4o-latest', 'gpt-4-turbo'"
         
@@ -174,6 +220,16 @@ class Completions:
         return Completion(response_data["choices"])
 
     def create_search(self, model: str, messages: list, max_tokens: int = None, temperature: int = None):
+        
+        """
+        Creates a search completion using the given model and messages.
+
+        :param model: The model to use for the search completion.
+        :param messages: The list of messages to use for the search completion.
+        :param max_tokens: The maximum number of tokens to generate (default is None).
+        :param temperature: The temperature to use for generating text (default is None).
+        :return: The generated completion.
+        """
         response_text = None
         if model not in ["gpt-4o", "gpt-4o-mini", "chatgpt-4o-latest", "gpt-4-turbo"]:
             return "Unsupported Model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'chatgpt-4o-latest', 'gpt-4-turbo'"

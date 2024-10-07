@@ -7,6 +7,11 @@ class TranscriptionResponse:
 class Transcriptions:
     def __init__(self, client):
 
+        """
+        Initializes a Transcriptions client with the given client.
+
+        :param client: The CablyAI client to use for making requests.
+        """
         self.client = client
 
     def create(self, model, file):
