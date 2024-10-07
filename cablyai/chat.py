@@ -194,10 +194,8 @@ class Completions:
         while response_text is None or (isinstance(response_text, str) and response_text.strip() == ""):
             print('Sending request...')
             
-            # Make the API call to get a response
             response_data = self.client._make_request(endpoint, payload)
             
-            # Check if the response has choices and messages
             if "choices" not in response_data or len(response_data["choices"]) == 0:
                 print("Warning: No valid choices in response.")
                 break
