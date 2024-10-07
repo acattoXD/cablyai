@@ -248,19 +248,19 @@ class Completions:
             payload["temperature"] = temperature
 
         while response_text is None or (isinstance(response_text, str) and response_text.strip() == ""):
-            print('Sending request...')
+            # print('Sending request...')
             
             response_data = self.client._make_request(endpoint, payload)
             
             if "choices" not in response_data or len(response_data["choices"]) == 0:
-                print("Warning: No valid choices in response.")
+                # print("Warning: No valid choices in response.")
                 break
             
             message = response_data["choices"][0]["message"]
             response_text = message["content"]
             tool_calls = message.get("tool_calls", [])
-            print("Tool Calls:", tool_calls)
-            print("Response Text:", response_text)
+            # print("Tool Calls:", tool_calls)
+            # print("Response Text:", response_text)
 
             messages.append(
                 {
@@ -281,7 +281,7 @@ class Completions:
             )
 
             for tool_call in tool_calls:
-                print(f'Executing tool call {tool_call}')
+                # print(f'Executing tool call {tool_call}')
                 function = tool_call["function"]
                 function_name = function["name"]
                 kwargs = json.loads(function["arguments"])
@@ -302,7 +302,7 @@ class Completions:
                             "content": tool_call_response
                         }
                     )
-                print(f'Executed tool call {tool_call}')
+                # print(f'Executed tool call {tool_call}')
 
         return Completion(response_data["choices"])
 
