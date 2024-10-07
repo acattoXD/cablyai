@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cablyai"
-version = "0.0.4"
+version = "0.0.4.2"
 description = "A library meant to be a wrapper for the CablyAI service."
 authors = ["acattoXD <acatto@acatto.lol>"]
 readme = "README.md"

@@ -197,8 +197,8 @@ class Completions:
         :return: The generated completion.
         """
 
-        if tools and model not in ["gpt-4o", "gpt-4o-mini", "chatgpt-4o-latest", "gpt-4-turbo"]:
-            return "Unsupported model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'chatgpt-4o-latest', 'gpt-4-turbo'"
+        if tools and model not in ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"]:
+            return "Unsupported model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo'"
         
         endpoint = "chat/completions"
         payload = {
@@ -231,8 +231,8 @@ class Completions:
         :return: The generated completion.
         """
         response_text = None
-        if model not in ["gpt-4o", "gpt-4o-mini", "chatgpt-4o-latest", "gpt-4-turbo"]:
-            return "Unsupported Model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'chatgpt-4o-latest', 'gpt-4-turbo'"
+        if model not in ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"]:
+            return "Unsupported Model. Please use one of the following: 'gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo'"
         
         endpoint = "chat/completions"
         payload = {
