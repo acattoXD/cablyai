@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cablyai"
-version = "0.0.3"
+version = "0.0.4"
 description = "A library meant to be a wrapper for the CablyAI service."
 authors = ["acattoXD <acatto@acatto.lol>"]
 readme = "README.md"
@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.12"
 requests = "*"
 aiohttp = "*"
+beautifulsoup4 = "*"
+googlesearch-python = "*"
 
 [build-system]
 requires = ["poetry-core"]

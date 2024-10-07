@@ -48,4 +48,5 @@ class CablyAI:
         if endpoint == "audio/speech":
             return response.content
         else:
+            # print(response.json())
             return response.json()
